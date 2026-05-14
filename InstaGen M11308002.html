@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Content Preview</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+TC:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'ig-bg': '#F5F7F8',
+                        'ig-text': '#262626',
+                        'ig-muted': '#8E8E8E',
+                        'ig-border': '#DBDBDB',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    backgroundImage: {
+                        'ig-gradient': 'linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F5F7F8;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-header {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+        }
+        .instagram-ring {
+            padding: 2px;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            border-radius: 50%;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #DBDBDB;
+            border-radius: 10px;
+        }
+        .btn-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-hover:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .media-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    </style>
+</head>
+<body class="font-sans text-ig-text antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 w-full z-50 glass-header">
+        <div class="max-w-[600px] mx-auto px-4 h-16 flex items-center justify-between">
+            <h1 class="text-lg font-semibold tracking-tight text-ig-text">Instagram Content Preview</h1>
+            <div class="flex space-x-4">
+                <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                <div class="w-2 h-2 rounded-full bg-green-400"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="pt-24 pb-12 px-4 flex flex-col items-center">
+        
+        <!-- Post Preview Card -->
+        <article class="w-full max-w-[600px] bg-white rounded-[16px] card-shadow overflow-hidden border border-gray-100">
+            
+            <!-- User Info Bar -->
+            <div class="p-4 flex items-center space-x-3">
+                <div class="instagram-ring">
+                    <div class="w-8 h-8 rounded-full bg-white p-0.5">
+                        <div class="w-full h-full rounded-full bg-gray-100 flex items-center justify-center overflow-hidden">
+                            <span class="text-[10px] font-bold text-gray-400 uppercase">HEBE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm leading-none font-mono">M11308002</span>
+                    <span class="text-[11px] text-ig-muted">Original Post Preview</span>
+                </div>
+                <button class="ml-auto p-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-gray-400"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+            </div>
+
+            <!-- Image Visual Display -->
+            <div class="relative w-full aspect-square bg-gray-50 overflow-hidden media-container">
+                <!-- Apply a subtle inner border overlay -->
+                <div class="absolute inset-0 pointer-events-none ring-1 ring-inset ring-black/5"></div>
+                <img src='https://opal.google/board/blobs/c708e446-434d-47a2-b8df-0730114b6a41' alt='Hebe Tien Visual Content' />
+            </div>
+
+            <!-- Interaction Bar -->
+            <div class="px-4 pt-4 flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-red-500 cursor-pointer transition-colors"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-blue-500 cursor-pointer transition-colors"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-green-500 cursor-pointer transition-colors"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hover:text-yellow-500 cursor-pointer transition-colors"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+            </div>
+
+            <!-- Caption Section -->
+            <div class="px-5 py-5">
+                <!-- Styled ID Label -->
+                <div class="mb-3 inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-bold font-mono bg-gray-100 text-gray-800 tracking-tight">
+                    M11308002
+                </div>
+                
+                <!-- Main Text -->
+                <div id="caption-content" class="text-sm leading-[1.6] space-y-4 whitespace-pre-line text-ig-text">
+終於可以再次沉浸在馥甄那空靈又充滿感染力的歌聲中了！🌿✨
+
+每一場演唱會、每一首新歌，都是一場與靈魂對話的旅程。不管是那首陪伴我們青春的《小幸運》，還是展現音樂深度的《無人知曉》，馥甄總是用她最真摯、最純粹的方式，把故事唱進我們的心底。🍃🎵
+
+她的音樂就像是一陣清新的微風，在喧囂的城市中為我們留下一片可以安靜呼吸的森林。這就是田氏音樂的魔力吧！❤️
+
+<span class="text-blue-900/80">#田馥甄 #HebeTien #馥甄 #女神 #音樂推薦 #靈魂歌者 #日常感悟 #音樂的力量 #Hebe #療癒系</span></div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="px-5 pb-6 pt-2 flex flex-col sm:flex-row gap-3">
+                <button onclick="copyCaption()" class="flex-1 btn-hover flex items-center justify-center space-x-2 border border-gray-200 py-2.5 px-4 rounded-lg text-sm font-semibold bg-white active:bg-gray-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                    <span>複製文案</span>
+                </button>
+                <button class="flex-1 btn-hover flex items-center justify-center space-x-2 bg-ig-text text-white py-2.5 px-4 rounded-lg text-sm font-semibold hover:bg-black active:scale-[0.98]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+                    <span>下載圖片</span>
+                </button>
+            </div>
+        </article>
+
+        <!-- Toast Notification (Hidden) -->
+        <div id="toast" class="fixed bottom-8 bg-gray-900 text-white px-6 py-3 rounded-full text-sm font-medium opacity-0 transition-all duration-300 transform translate-y-4 pointer-events-none">
+            文案已成功複製到剪貼簿！
+        </div>
+
+    </main>
+
+    <script>
+        function copyCaption() {
+            const text = document.getElementById('caption-content').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.remove('opacity-0', 'translate-y-4');
+                toast.classList.add('opacity-100', 'translate-y-0');
+                
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4');
+                    toast.classList.remove('opacity-100', 'translate-y-0');
+                }, 3000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // Add a nice reveal animation for the card
+        document.addEventListener('DOMContentLoaded', () => {
+            const card = document.querySelector('article');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.32, 1)';
+            
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        });
+    </script>
+</body>
+</html>
